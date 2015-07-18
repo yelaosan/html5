@@ -1014,110 +1014,21 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>1.introduction</title></head><body><article class="markdown-body"><h2 id="1"><a name="user-content-1" href="#1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 简介</h2>
-<p><a href="http://www.w3.org/TR/2014/REC-html5-20141028/introduction.html#introduction," title="查看原规范">查看原规范&gt;&gt;</a></p>
-<ul>
-<li><a href="#11">1.1 背景</a></li>
-<li><a href="#12">1.2 读者</a></li>
-<li><a href="#13">1.3 范围</a></li>
-<li><a href="#14">1.4 历史</a></li>
-<li><a href="#15">1.5 设计注释</a></li>
-<li><a href="#16-htmlxhtml">1.6 HTML和XHTML的对比</a></li>
-<li><a href="#17">1.7 规范的结构</a></li>
-<li><a href="#18">1.8 关于隐私</a></li>
-<li><a href="#19-html">1.9 快速认识html</a></li>
-<li><a href="#110">1.10 对作者的一致性要求</a></li>
-<li><a href="#111">1.11 推荐阅读</a></li>
-</ul>
-<h4 id="11"><a name="user-content-11" href="#11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1 背景</h4>
-<p><code>HTML</code>的设计初衷是作为语义化地描述科技文献的语言,尽管它的总体设计和这些年来的不断改编已经让它能够被用来描述一些其他类型的文档。<br />
-    由于最开始主题模糊，所以在过去那些年<code>HTML</code>规范一直在不断修正来更新在<code>Web</code>应用出现的问题。</p>
-<h4 id="12"><a name="user-content-12" href="#12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 读者</h4>
+</style><title>2.infrastructure</title></head><body><article class="markdown-body"><h2 id="2"><a name="user-content-2" href="#2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. 基础建设</h2>
+<p><a href="http://www.w3.org/TR/2014/REC-html5-20141028/infrastructure.html," title="查看原规范">查看原规范&gt;&gt;</a></p>
+<h4 id="21"><a name="user-content-21" href="#21" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1 术语</h4>
 <p>略</p>
-<h4 id="13"><a name="user-content-13" href="#13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3 范围</h4>
+<h5 id="211"><a name="user-content-211" href="#211" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.1 资源</h5>
 <p>略</p>
-<h4 id="14"><a name="user-content-14" href="#14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.4 历史</h4>
-<p>历史略，提一点：<a href="http://www.w3.org/TR/2014/REC-html5-20141028/references.html#refsHTMLDIFF">html5相对html4的不同</a></p>
-<h4 id="15"><a name="user-content-15" href="#15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5 设计注释</h4>
-<p>官方承认<code>html</code>有些方面在设计之初无意义且前后不一致。接下来是原因（略）。尽管这样，但还是在做着诸多努力来坚持确定的设计目标。例如：</p>
-<h5 id="151-serializability-of-script-execution"><a name="user-content-151-serializability-of-script-execution" href="#151-serializability-of-script-execution" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5.1 脚本执行的串行性（Serializability of script execution）</h5>
-<p>为了避开多线程的复杂性，<code>HTML</code>和<code>DOM API</code>都被设计为当前脚本不能够检测到同时执行的其他脚本，即便是用<code>worker</code>。其目的是使得这种实现的行为可以被认为是序列化所有浏览器上下文中所有脚本的执行。<br />
-（看到这里有点疑问，<code>worker</code>不是模拟多线程，让主线程可以做其他事，复杂计算使用<code>worker</code>吗？不过它们之间是通过<code>message</code>事件通讯，所以主线程应该还是不能检测<code>worker</code>的执行。）</p>
-<blockquote>
-<p>注释：<code>navigator.yieldForStorageUpdates()</code>方法在这种模型下也就等同于让其他脚本先执行，当前调用脚本则被锁定。</p>
-</blockquote>
-<h5 id="152-compliance-with-other-specifications"><a name="user-content-152-compliance-with-other-specifications" href="#152-compliance-with-other-specifications" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5.2 依从其他规范（Compliance with other specifications）</h5>
-<p>略</p>
-<h5 id="153-extensibility"><a name="user-content-153-extensibility" href="#153-extensibility" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5.3 可扩展性（Extensibility）</h5>
-<p><code>html</code>可扩展性良好，例如：</p>
-<ul>
-<li>可以使用<code>class</code>属性扩展原有元素</li>
-<li>可以使用<code>data-*</code>属性来避开浏览器的触碰，让脚本可以在<code>html</code>元素上引入数据然后使用</li>
-<li>可以使用<code>&lt;meta name="" content=""</code>来引入页面级的元数据</li>
-<li>可以使用<code>rel=""</code>来注释拥有特殊含义的链接</li>
-<li>可以使用<code>&lt;script type=""&gt;</code>来嵌入原始数据，以便内链或外链脚本的进一步操作</li>
-<li>可以使用<code>&lt;embed&gt;</code>元素来创建插件并触发</li>
-<li>可以使用<code>JavaScript</code>的<code>prototype</code>机制来扩展<code>API</code>,这一点在脚本库中被广泛使用</li>
-</ul>
-<h4 id="16-htmlxhtml"><a name="user-content-16-htmlxhtml" href="#16-htmlxhtml" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.6 HTML和XHTML的对比</h4>
-<p>略</p>
-<h4 id="17"><a name="user-content-17" href="#17" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.7 规范的结构</h4>
-<p>约等于规范的目录结构，略。</p>
-<h5 id="171"><a name="user-content-171" href="#171" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.7.1 如何阅读规范</h5>
-<p>本规范需要像其他所有规范一样，先一页一页地阅读几遍，然后在倒序阅读至少一遍，然后随机抽取章节进行穿插这阅读，并且穿插阅读的时候要跟随那些交叉连接。（译者注：就像小时候背乘法口诀一样，顺着背，倒着背、再穿插着背。一遍规范都没阅读过的小编泪流满面T^T）<br />
-在这中间，开发者和<code>web</code>浏览器需要达成一致性协定，开发者决定什么是被允许的，而<code>web</code>浏览器决定如何表现。</p>
-<blockquote>
-<p>比如“属性<code>foo</code>的值必须为整数”是开发者的条件，它表明了被允许的值；相应的，“属性<code>foo</code>的值必须通过整数解析规则进行解析”作为<code>web</code>浏览器的条件，则决定如何展现内容。</p>
-</blockquote>
-<p>但是他们之间也并没有什么纽带关系。</p>
-<blockquote>
-<p>承接上面的例子，比如及时开发者要求<code>foo</code>属性的值为整数，但是<code>web</code>浏览器将其转化成字符串。（这就是浏览器兼容问题的来源——小编）</p>
-</blockquote>
-<h5 id="172"><a name="user-content-172" href="#172" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.7.2 版面约定</h5>
-<p>就是什么代表注释，什么代表警告灯，略。</p>
-<h4 id="18"><a name="user-content-18" href="#18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.8 关于隐私</h4>
-<p>略</p>
-<h4 id="19-html"><a name="user-content-19-html" href="#19-html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.9 快速认识html</h4>
-<p><pre><code class="html5">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;Sample page&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;h1&gt;Sample page&lt;/h1&gt;
-        &lt;p&gt;This is a &lt;a href=&quot;demo.html&quot;&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
-        &lt;!-- this is a comment --&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><br />
-这里就不详细解释标签含义了</p>
-<h5 id="191-html"><a name="user-content-191-html" href="#191-html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.9.1 使用html编写安全的应用程序</h5>
-<p>当使用<code>html</code>编写交互网站是，要注意不要留下漏洞给攻击者来影响网站的诚信和用户。关于这一点的研究已经超出本本文档的范围，但是这里还是会简要介绍一下相关的问题。<br />
-<code>web</code>安全是基于“源”的概念，相应地<code>web</code>上的潜在攻击都涉及到跨源的行为。[<a href="http://www.w3.org/TR/2014/REC-html5-20141028/references.html#refsORIGIN">源</a>]</p>
-<ul>
-<li>Cross-site-scripting（<code>XSS</code>跨站脚本攻击，规避方法：过滤用户输入）</li>
-<li>SQL injection（<code>SQL</code>注入，规避方法：过滤用户输入）</li>
-<li>Cross-site request forgery（<code>CSRF</code>跨站请求伪造，规避方法：使用隐藏字段，或者检查请求头）</li>
-<li>Clickjacking（点击劫持，规避方法：比较<code>window</code>对象和<code>top</code>属性）</li>
-</ul>
-<h5 id="192-api"><a name="user-content-192-api" href="#192-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.9.2 使用脚本API需要避免的陷阱</h5>
-<p><code>html</code>的脚本是运行时的，并不需要预先编译。<br />
-一方面解析<code>html</code>是异步递增的，这意味着解释器可以再任意点暂停让脚本先运行。这通常是好事，但是也要注意避免挂上事件处理钩子的时候事件可能已经触发了</p>
-<h5 id="193"><a name="user-content-193" href="#193" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.9.3 如何捕获错误：校验器和一致性检测器</h5>
-<p><a href="http://validator.w3.org/nu/">检测网址</a></p>
-<h4 id="110"><a name="user-content-110" href="#110" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.10 对作者的一致性要求</h4>
-<p>跟之前的那些版本不同，这一版的规范从一些细节上定义了有效文档和无效文档需要的加工。<br />
-即便是在大多数案例中都很好地定义了，一致性要求仍然很重要。</p>
-<h5 id="1101"><a name="user-content-1101" href="#1101" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.10.1 直觉性的标记</h5>
-<p>在之前版本中的直觉性的特征不再被允许，因为它们会带来诸多问题：</p>
-<ul>
-<li>无障碍性更差</li>
-<li>更高的维护成本</li>
-<li>增加了文档的大小</li>
-</ul>
-<h5 id="1102"><a name="user-content-1102" href="#1102" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.10.2 语法错误</h5>
-<p>开闭标签的缺失，标签的嵌套混乱，特殊的字符和编码等</p>
-<h5 id="1103"><a name="user-content-1103" href="#1103" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.10.3 内容模型和属性值得限制</h5>
-<p>暂略</p>
-<h4 id="111"><a name="user-content-111" href="#111" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.11 推荐阅读</h4>
-<p>略</p></article></body></html>
+<h5 id="212-xml"><a name="user-content-212-xml" href="#212-xml" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.2 XML</h5>
+<p>为了方便从<code>HTML</code>迁移到<code>XHTML</code>，符合本规范的用户代理将会在 <code>http://www.w3.org/1999/xhtml</code> 的命名空间下将元素以<code>HTML</code>的形式呈现，至少是为了<code>DOM</code>和<code>CSS</code>。本规范中使用的“<strong>HTML元素</strong>”泛指所有在该命名空间下的所有元素以及泛指所有<code>HTML</code>和<code>XHTML</code>元素。</p>
+<p>除非另作申明，所有在本规范汇总定义和提到的元素都在<a href="#28">HTML命名空间</a>（<code>http://www.w3.org/1999/xhtml</code>）下，并且所有在本规范中定义和提到的属性都没有命名空间。</p>
+<p><strong>元素类型</strong>是用来泛指那些拥有名称和命名空间的元素集。例如，button元素是指那些拥有<code>button</code>元素类型的元素，意味着它们拥有<code>button</code>名称和<a href="#28">HTML命名空间</a></p>
+<h5 id="213-dom"><a name="user-content-213-dom" href="#213-dom" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.3 DOM树</h5>
+<p><code>DOM</code>对象的<strong>根元素</strong>就是<a href="#3.dom.html#31">DOM</a>的第一个子元素（如果有的话），如果没有那么DOM(#3.dom.html#31)就没有根元素。</p>
+<p>当<strong>根元素</strong>不是指代<a href="#3.dom.html#31">DOM</a>对象的根元素时，表示的是当前节点最上层的祖先元素节点，或者是节点本身（当它没有祖先时）。当节点在文档中时，该节点的根元素实际上就是<code>DOM</code>的根元素；而当该节点不在<code>DOM</code>树里时，根节点是一个孤立的节点。</p>
+<p>当一个元素的根元素是<code>DOM</code>对象的根元素时，表示该元素处于<code>DOM</code>树中。当一个元素的根元素变为<code>DOM</code>的根元素时，该元素就被插入了DOM中。同理，当一个元素的根元素从<code>DOM</code>的根元素变为其他元素时，则表明该元素被移出了DOM。</p>
+<p>一个节点的“<strong>目录子树</strong>”是以该节点根元素为根的子树。当节点处于<code>DOM</code>中时，它的目录子树也就是<code>DOM</code>树。</p>
+<p>“<strong>树顺序</strong>（直译tree order，目前不知道在中文里的对应术语π_π）”指的是深度优先、前序遍历相关<code>DOM</code>节点（通过<code>parentNode/childNodes</code>关系）。</p>
+<h5 id="214"><a name="user-content-214" href="#214" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.4 脚本</h5>
+<p>未完待续&hellip;</p></article></body></html>
