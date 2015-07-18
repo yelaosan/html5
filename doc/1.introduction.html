@@ -1041,7 +1041,8 @@ body .markdown-body
 <h4 id="15"><a name="user-content-15" href="#15" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5 设计注释</h4>
 <p>官方承认<code>html</code>有些方面在设计之初无意义且前后不一致。接下来是原因（略）。尽管这样，但还是在做着诸多努力来坚持确定的设计目标。例如：</p>
 <h5 id="151-serializability-of-script-execution"><a name="user-content-151-serializability-of-script-execution" href="#151-serializability-of-script-execution" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5.1 脚本执行的串行性（Serializability of script execution）</h5>
-<p>为了避开多线程的复杂性，<code>HTML</code>和<code>DOM API</code>都被设计为单线程，即便是用<code>workers</code>。</p>
+<p>为了避开多线程的复杂性，<code>HTML</code>和<code>DOM API</code>都被设计为当前脚本不能够检测到同时执行的其他脚本，即便是用<code>worker</code>。其目的是使得这种实现的行为可以被认为是序列化所有浏览器上下文中所有脚本的执行。<br />
+（看到这里有点疑问，<code>worker</code>不是模拟多线程，让主线程可以做其他事，复杂计算使用<code>worker</code>吗？不过它们之间是通过<code>message</code>事件通讯，所以主线程应该还是不能检测<code>worker</code>的执行。）</p>
 <blockquote>
 <p>注释：<code>navigator.yieldForStorageUpdates()</code>方法在这种模型下也就等同于让其他脚本先执行，当前调用脚本则被锁定。</p>
 </blockquote>
@@ -1077,7 +1078,7 @@ body .markdown-body
 <h4 id="18"><a name="user-content-18" href="#18" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.8 关于隐私</h4>
 <p>略</p>
 <h4 id="19-html"><a name="user-content-19-html" href="#19-html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.9 快速认识html</h4>
-<p><pre class="codehilite"><code class="language-html5">&lt;!DOCTYPE html&gt;
+<p><pre><code class="html5">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;Sample page&lt;/title&gt;
@@ -1087,8 +1088,8 @@ body .markdown-body
         &lt;p&gt;This is a &lt;a href=&quot;demo.html&quot;&gt;simple&lt;/a&gt; sample.&lt;/p&gt;
         &lt;!-- this is a comment --&gt;
     &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-<br />
+&lt;/html&gt;
+</code></pre><br />
 这里就不详细解释标签含义了</p>
 <h5 id="191-html"><a name="user-content-191-html" href="#191-html" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.9.1 使用html编写安全的应用程序</h5>
 <p>当使用<code>html</code>编写交互网站是，要注意不要留下漏洞给攻击者来影响网站的诚信和用户。关于这一点的研究已经超出本本文档的范围，但是这里还是会简要介绍一下相关的问题。<br />
